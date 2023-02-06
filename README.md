@@ -1,3 +1,60 @@
+## Pretraining ConvMAE on MAF
+This model was tested on MAF VM9 (v23.1.2). SDA size is Medium.128GB.
+Original repo: https://github.com/Alpha-VL/FastConvMAE/blob/main/PRETRAIN.md
+
+## Usage
+### Clone the repo
+```bash
+git clone https://github.com/thuc-moreh/FastConvMAE_Moreh.git
+cd FastConvMAE_Moreh
+```
+
+### Install
+
+- Create a conda environment and activate it:
+```bash
+conda create -n fastconvmae python=3.8
+conda activate fastconvmae
+update-moreh --target 23.1.2 --nightly --force
+```
+
+- Install pip packages
+
+```bash
+pip install -r requirements.txt
+```
+
+### Data preparation
+
+You can download the ImageNet-1K (suggest using a subset of ImageNet-100lcs from Moreh) [here](https://image-net.org) and prepare the ImageNet-1K follow this format:
+```tree data
+imagenet
+  ├── train
+      ├── class1
+      │   ├── img1.jpeg
+      │   ├── img2.jpeg
+      │   └── ...
+      ├── class2
+      │   ├── img3.jpeg
+      │   └── ...
+      └── ...
+```
+The repo uses a tiny subset of the ImageNet-1K dataset, which only contains 1 class. Data directory is `/nas/common_data/imagenet_tiny`
+
+### Training
+To pretrain FastConvMAE, run
+
+```bash
+python main_pretrain.py
+```
+The training log of 20 epochs is saved at `training_log_HAC9.txt`.
+
+Notes:
+- The training time of the first iteration on Moreh and Nvidia machines are roughly the same (3.5-4s), but on subsequent iterations NVIDIA VM only takes roughly 0.9s, while Moreh VM takes roughly 2,7s (3 times slower).
+- Max memory usage on NVIDIA VM is 34032 Mb, while that of Moreh is 47156 Mb
+- The learning rate and training loss convergence behaviors are roughly similar on both machines (depending on parameters initialization)
+
+## Below is the orginial README
 <div align="center">
 <h1>🚀Fast ConvMAE🚀</h1>
 <h3>Fast ConvMAE: Fast Pretraining of ConvMAE</h3>
