@@ -1,5 +1,6 @@
 ## Pretraining ConvMAE on MAF
-This model was tested on MAF VM9 (v23.1.2). SDA size is Medium.128GB.
+![](https://badgen.net/badge/Nvidia-A100/passed/green) ![](https://badgen.net/badge/Moreh-HAC/passed/green)
+This model was tested on MAF VM9 (v23.1.2), SDA size is Medium.128GB, and on Nvidia-A100 machine (haca1003).
 Original repo: https://github.com/Alpha-VL/FastConvMAE/blob/main/PRETRAIN.md
 
 ## Usage
@@ -41,18 +42,22 @@ imagenet
 ```
 The repo uses a tiny subset of the ImageNet-1K dataset, which only contains 1 class. Data directory is `/nas/common_data/imagenet_tiny`
 
-### Training
+### Training on Moreh VM
 To pretrain FastConvMAE, run
 
 ```bash
 python main_pretrain.py
 ```
-The training log of 20 epochs is saved at `training_log_HAC9.txt`.
+The training log of 20 epochs on Moreh VM is saved at `training_log_moreh_vm9.txt`.
 
 Notes:
 - The training time of the first iteration on Moreh and Nvidia machines are roughly the same (3.5-4s), but on subsequent iterations NVIDIA VM only takes roughly 0.9s, while Moreh VM takes roughly 2,7s (3 times slower).
 - Max memory usage on NVIDIA VM is 34032 Mb, while that of Moreh is 47156 Mb
 - The learning rate and training loss convergence behaviors are roughly similar on both machines (depending on parameters initialization)
+
+### Training on Nvidia A100 VM 
+Please follow [PRETRAIN.md](PRETRAIN.md) for pretraining
+The training log of 20 epochs on Nvidia A100 VM is saved at `training_log_nvidia_hac1003`.
 
 ## Below is the orginial README
 <div align="center">
