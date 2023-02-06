@@ -1,0 +1,1 @@
+update-moreh --target 23.1.2 --nightly --force
