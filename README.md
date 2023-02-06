@@ -51,7 +51,7 @@ The training log of 20 epochs is saved at `training_log_HAC9.txt`.
 
 Notes:
 - The training time of the first iteration on Moreh and Nvidia machines are roughly the same (3.5-4s), but on subsequent iterations NVIDIA VM only takes roughly 0.9s, while Moreh VM takes roughly 2,7s (3 times slower).
-- Max memory usage on NVIDIA VM is 34032, while that of Moreh is 47156
+- Max memory usage on NVIDIA VM is 34032 Mb, while that of Moreh is 47156 Mb
 - The learning rate and training loss convergence behaviors are roughly similar on both machines (depending on parameters initialization)
 
 ## Below is the orginial README
