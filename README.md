@@ -1,5 +1,6 @@
 ## Pretraining ConvMAE on MAF
 ![](https://badgen.net/badge/Nvidia-A100/passed/green) ![](https://badgen.net/badge/Moreh-HAC/passed/green)
+
 This model was tested on MAF VM9 (v23.1.2), SDA size is Medium.128GB, and on Nvidia-A100 machine (haca1003).
 Original repo: https://github.com/Alpha-VL/FastConvMAE/blob/main/PRETRAIN.md
 
