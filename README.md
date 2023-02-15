@@ -43,7 +43,7 @@ imagenet
 ```
 The repo uses a tiny subset of the ImageNet-1K dataset, which only contains 1 class. Data directory is `/nas/common_data/imagenet_tiny`
 
-### Training on Moreh VM
+### Pre-training on Moreh VM
 To pretrain FastConvMAE, run
 
 ```bash
@@ -56,9 +56,20 @@ Notes:
 - Max memory usage on NVIDIA VM is 34032 Mb, while that of Moreh is 47156 Mb
 - The learning rate and training loss convergence behaviors are roughly similar on both machines (depending on parameters initialization)
 
-### Training on Nvidia A100 VM 
+### Pre-training on Nvidia A100 VM 
 Please follow [PRETRAIN.md](PRETRAIN.md) for pretraining
 The training log of 20 epochs on Nvidia A100 VM is saved at `training_log_nvidia_hac1003`.
+
+
+### Finetune and evaluation
+
+Follow FINETUNE.md for fintuning and evaluation.
+Run 
+```bash
+python main_finetune.py     --output_dir /nas/thuchk/FastConvMAE/output_dir     --batch_size 32     --model convvit_base_patch16     --finetune /nas/thuchk/FastConvMAE/output_dir/checkpoint-4.pth     --epochs 5    --blr 5e-4 --layer_decay 0.65     --weight_decay 0.05 --drop_path 0.1 --reprob 0.25 --mixup 0.8 --cutmix 1.0     --dist_eval --data_path /nas/common_data/imagenet_100cls
+```
+The log can be found in logs folder
+
 
 ## Below is the orginial README
 <div align="center">
